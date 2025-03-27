@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvhywb20vd7eb"]
+
+[ext_resource type="Script" path="res://enemy_path.gd" id="1_f2ugw"]
+[ext_resource type="PackedScene" uid="uid://bgly3ow7c2cjd" path="res://enemy.tscn" id="2_p0vgq"]
+
+[sub_resource type="Curve2D" id="Curve2D_dmv4c"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -135, -185, 0, 0, 0, 0, -136, -120, 0, 0, 0, 0, -23, -119, 0, 0, 0, 0, -24, -153, 0, 0, 0, 0, 41, -151, 0, 0, 0, 0, 42, -90, 0, 0, 0, 0, 8, -87, 0, 0, 0, 0, 8, -9, 0, 0, 0, 0, -8, -9, 0, 0, 0, 0, -8, 86, 0, 0, 0, 0, -42, 87, 0, 0, 0, 0, -42, 153, 0, 0, 0, 0, 25, 152, 0, 0, 0, 0, 23, 122, 0, 0, 0, 0, 135, 118, 0, 0, 0, 0, 134, 184)
+}
+point_count = 16
+
+[node name="EnemyPath" type="Path2D"]
+curve = SubResource("Curve2D_dmv4c")
+script = ExtResource("1_f2ugw")
+enemy_scene = ExtResource("2_p0vgq")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
